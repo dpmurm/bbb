@@ -36,6 +36,25 @@ class UserController extends CController
      */
     public function actionLogin()
     {
+        $form = new User();
+
+        // Проверяем является ли пользователь гостем
+        // ведь если он уже зарегистрирован - формы он не должен увидеть.
+        if (!Yii::app()->user->isGuest) {
+            throw new CException('Вы уже зарегистрированы!');
+        } else {
+            if (!empty($_POST['User'])) {
+                $form->attributes = $_POST['User'];
+                $form->verifyCode = $_POST['User']['verifyCode'];
+                $form->scenario = 'login';
+                // Проверяем правильность данных
+                if($form->validate()) {
+                    // если всё ок - кидаем на главную страницу
+                    $this->redirect(Yii::app()->homeUrl);
+                }
+            }
+            $this->render('login', array('form' => $form));
+        }
     }
 
     /**
@@ -46,6 +65,10 @@ class UserController extends CController
      */
     public function actionLogout()
     {
+        // Выходим
+        Yii::app()->user->logout();
+        // Перезагружаем страницу
+        $this->redirect(Yii::app()->user->returnUrl);
     }
 
     /**
