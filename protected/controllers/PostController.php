@@ -1,6 +1,23 @@
 <?php
      class PostController extends CController
-     {           
+     {     
+
+public function actions()
+    {
+        return array(
+            // Создаем экшинс captcha.
+            // Он понадобиться нам для формы регистрации (да и авторизации)
+            'captcha'=>array(
+                'class'=>'CCaptchaAction',
+                'backColor'=> 0x003300,
+                'maxLength'=> 3,
+                'minLength'=> 3,
+                'foreColor'=> 0x66FF66,
+            ),
+        );
+    }
+
+	 
          public function actionIndex()
          {
              $this->pageTitle = "Мой блог :: Главная страница";

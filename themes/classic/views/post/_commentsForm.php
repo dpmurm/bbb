@@ -26,17 +26,18 @@
 
 <?php echo CHtml::endForm($form); ?>
 
-
+<!--
     <script>
         $(document).ready(function() {
             $("#captcha").hide();
             $("#guestlogin").hide();
 
             $("#Comments_text").click(function(){
-                <?php if (Yii::app()->user->isGuest): ?>
+                <?php //if (Yii::app()->user->isGuest): ?>
                 $("#guestlogin").show();
-                <?php endif; ?>
+                <?php //endif; ?>
                 $("#captcha").show();
             });
         });
     </script>
+-->

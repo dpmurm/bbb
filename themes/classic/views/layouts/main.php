@@ -29,12 +29,12 @@ Description: A two-column fixed-width template suitable for small websites.
         <!-- end div#logo -->
         <div id="menu">
             <ul>
-                <li><a href="<?=Yii::app()->createUrl("post/index/");?>">Главная</a></li>
+                <li><a href="<?php echo Yii::app()->createUrl("post/index/");?>">Главная</a></li>
                 <?php if (Yii::app()->user->isGuest): ?>
-                    <li><a href="<?=Yii::app()->createUrl("user/registration/");?>">Регистрация</a></li>
-                    <li><a href="<?=Yii::app()->createUrl("user/login/");?>">Вход</a></li>
+                    <li><a href="<?php echo Yii::app()->createUrl("user/registration/");?>">Регистрация</a></li>
+                    <li><a href="<?php echo Yii::app()->createUrl("user/login/");?>">Вход</a></li>
                 <?php else: ?>
-                <li><a href="<?=Yii::app()->createUrl("user/logout/");?>">Выход (<?=Yii::app()->user->name?>)</a>
+                <li><a href="<?php echo Yii::app()->createUrl("user/logout/");?>">Выход (<?php echo Yii::app()->user->name?>)</a>
                     <?php endif; ?>
             </ul>
         </div>

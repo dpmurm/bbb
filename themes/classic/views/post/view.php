@@ -1,9 +1,9 @@
 <table border="0" width="100%">
 
     <?php if (!empty($post)) : ?>
-        <tr><td><h1><?=$post->name;?></h1></td></tr>
-        <tr><td><?=$post->created;?></td></tr>
-        <tr><td><?=$post->text;?></td></tr>
+        <tr><td><h1><?php echo $post->name;?></h1></td></tr>
+        <tr><td><?php echo $post->created;?></td></tr>
+        <tr><td><?php echo $post->text;?></td></tr>
         <tr>
             <td>
                 <h3>Комментарии</h3>
