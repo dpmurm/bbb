@@ -27,10 +27,7 @@ class Comments extends CActiveRecord
             'login'      => 'Имя',
         );
     }
-    public function safeAttributes()
-    {
-        return array('verifyCode', 'text', 'login');
-    }
+    
     public function rules()
     {
         return array(
@@ -38,8 +35,14 @@ class Comments extends CActiveRecord
             array('login', 'match', 'pattern' =>'/^[A-Za-z0-9А-Яа-я\_\-\s,]+$/u','message' => 'Логин содержит недопустимые символы.'),
             // логин, пароль не должны быть больше 128-и символов, и меньше трёх
             array('login', 'length', 'max'=>128, 'min' => 3),
+			array('text', 'required'),
             // проверка капчи
             array('verifyCode', 'captcha', 'allowEmpty'=>!extension_loaded('gd')),
         );
+    }
+	
+	public function safeAttributes()
+    {
+        return array('verifyCode', 'text', 'login');
     }
 }
